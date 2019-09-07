@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+    {% block stype %}
+        <link href="/static/css/main.css" rel="stylesheet">
+    {% endblock %}
+{% block content %}
+    <div class="about_box">
+      <h2 class="nh1"><span>您现在的位置是：<a href="/" target="_blank">网站首页</a>>><a href="#" target="_blank">个人日记</a></span><b>个人日记</b></h2>
+      <div class="dtxw box">
+          {% for art in page_article %}
+            <li>
+              <div class="dttext f_l">
+                <ul>
+                  <h2><a href="/about/{{ art.id }}">{{ art.title }}</a></h2>
+                  <p>{{ art.description }}</p>
+                  <span>{{ art.public_time }}</span>
+                </ul>
+              </div>
+              <div class="xwpic f_r"><a href="/"><img src="/static/images/02.jpg"></a></div>
+            </li>
+          {% endfor %}
+      </div>
+      <div class="pagelist">页次：1/1 每页25 总数10
+          <a href="/about/故事/1">首页</a>
+          <a href="//newlist/故事/{{ p }}">上一页</a>
+          {% for p in page_range %}
+              <a href="/newlist/故事/{{ p }}">{{ p }}</a>
+          {% endfor %}
+          <a href="//newlist/故事/{{ p }}">下一页</a>
+          <a href="/about/故事/{{ aa.id }}">尾页</a>
+      </div>
+    </div>
+{% endblock %}
